@@ -1,6 +1,6 @@
-__author__ = 'fyu'
+from myinit import *
+print 'hellow world! '+pack_str
 
 
-print 'hellow world!'
 
 
