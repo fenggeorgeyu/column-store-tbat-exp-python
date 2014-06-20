@@ -4,7 +4,8 @@ __author__ = 'fyu'
 from prepare import prepareDataStringFile as pd
 from prepare import data_dir,suffix,np
 
-num_lines=1000
+num_lines_1m=4766
+num_lines=num_lines_1m*10240
 pers=[0.1,0.2,0.3] # update percentage
 
 bat_file_name=data_dir+'bat'+suffix # BAT
