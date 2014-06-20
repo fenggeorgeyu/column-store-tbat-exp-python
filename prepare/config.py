@@ -1,7 +1,7 @@
 __author__ = 'fyu'
 
 import os,sys,time,datetime
-import cPickle as pk
+
 import numpy as np
 from base_class import BUN,TBUN
 
@@ -14,7 +14,7 @@ tbat_file_name=data_dir+'tbat'+suffix # TBAT
 update_file_name=data_dir+'update'+suffix # Update File
 
 bat_format='%10d,%10d\n'
-tbat_format='%10g,%10d,%10d\n'
+tbat_format='%5g,%10d,%10d\n'
 
 num_lines=100000 # total lines for BAT and TBAT
 

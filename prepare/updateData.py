@@ -14,7 +14,7 @@ def updateBAT(bat_file_name,update_file_name):
     for updateLine in update_file:
         (updateLineNumStr,updateValue)=updateLine.split(',')
         #print updateLineNumStr+','+updateValue
-        updateLineNum=int(updateLineNumStr)
+        updateLineNum=long(updateLineNumStr)
         bat_file.seek((updateLineNum-1)*len(updateLine))
         bat_file.write(updateLine)
     bat_file.close()
@@ -41,5 +41,5 @@ updateTBAT(tbat_file_name,update_file_name)
 tbat_time=time.time()-tbat_time_start
 print 'tbat update time:'+str(tbat_time)
 
-overhead=(bat_time-tbat_time)/bat_time*100
+overhead=(bat_time)/tbat_time*100
 print 'overhead=%g%%' % (overhead)
