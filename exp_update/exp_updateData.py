@@ -34,7 +34,7 @@ for per in pers:
     #print 'tbat update time:'+str(tbat_time)
     tbat_update_times.append(tbat_update_time)
 
-    overhead=bat_update_time/tbat_update_time*100.00
+    overhead=(bat_update_time/tbat_update_time-1)*100.00
     #print 'overhead=%g%%' % (overhead)
     overheads.append(overhead)
 
