@@ -31,15 +31,16 @@ def updateTBAT(tbat_file_name,update_file_name):
     tbat_file.close()
     update_file.close()
 
-bat_time_start=time.time()
-updateBAT(bat_file_name,update_file_name)
-bat_time=time.time()-bat_time_start
-print 'bat update time:'+str(bat_time)
+if __name__=='__main__':
+    bat_time_start=time.time()
+    updateBAT(bat_file_name,update_file_name)
+    bat_time=time.time()-bat_time_start
+    print 'bat update time:'+str(bat_time)
 
-tbat_time_start=time.time()
-updateTBAT(tbat_file_name,update_file_name)
-tbat_time=time.time()-tbat_time_start
-print 'tbat update time:'+str(tbat_time)
+    tbat_time_start=time.time()
+    updateTBAT(tbat_file_name,update_file_name)
+    tbat_time=time.time()-tbat_time_start
+    print 'tbat update time:'+str(tbat_time)
 
-overhead=(bat_time)/tbat_time*100
-print 'overhead=%g%%' % (overhead)
+    overhead=(bat_time)/tbat_time*100
+    print 'overhead=%g%%' % (overhead)

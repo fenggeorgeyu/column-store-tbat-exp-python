@@ -19,14 +19,17 @@ def prepareData(num_lines, bat_file_name, tbat_file_name):
     tbat_file.close()
 
 
-def prepareUpdateList(num_lines, update_file_name):
+def prepareUpdateList(per, num_lines, update_file_name):
     update_file=open(update_file_name,'w')
     # --------- prepare update list -----------
+    #print 'total lines: %d' % num_lines
+    update_num_lines=long(per*num_lines)
+    #print 'total update lines: %d' % update_num_lines
     total_updated=0 # cound updated lines must <=update_lines
     for i in xrange(0,num_lines):
         # prepare update list
         rnd=np.random.uniform(0,1,1)
-        if rnd <= per and total_updated < update_lines:
+        if rnd <= per and total_updated < update_num_lines:
             total_updated+=1
         # only 100*per% can be updated from the original list
             update_str= bat_format  % (i+1,-1)

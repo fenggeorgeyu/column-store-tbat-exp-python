@@ -19,6 +19,6 @@ tbat_format='%5g,%10d,%10d\n'
 num_lines=100000 # total lines for BAT and TBAT
 
 per=0.20 # percentage of update of the original table size
-update_lines=int(np.floor(per*num_lines))
+
 
 # print update_lines

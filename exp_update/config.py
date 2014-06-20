@@ -1,16 +1,20 @@
 __author__ = 'fyu'
 
-from prepare import prepareDataStringFile as pd
-from prepare import data_dir,suffix,np
+import time, datetime
+from prepare import data_dir,suffix
 
+num_lines_1m=47660
+num_lines_1g=num_lines_1m*1024
+num_lines=num_lines_1m
+pers=[0.1,0.2,0.3] # update percentage
 
-num_lines=1000
 
 bat_file_name=data_dir+'bat'+suffix # BAT
 tbat_file_name=data_dir+'tbat'+suffix # TBAT
 
 pers=[0.1,0.2,0.3] # update percentage
 
-update_file_names=[]
-for per in pers:
-    update_file_names.append(data_dir+'update'+str(per)+suffix) # Update File
+
+result_file_name=data_dir+'result'+time.strftime("%y%m%d-%Ih%Mm%Ss")+'.txt'
+
+
