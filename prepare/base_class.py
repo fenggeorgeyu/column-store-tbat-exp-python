@@ -6,7 +6,7 @@ class BUN:
         self.oid=oid
         self.value=value
     def __str__(self):
-        return "(%s,%s)" % (self.oid, self.value)
+        return "(%s,%g)" % (self.oid, self.value)
 
 # TBUN for TBAT
 class TBUN(BUN):
@@ -14,6 +14,6 @@ class TBUN(BUN):
         BUN.__init__(self, oid, value)
         self.timestamp=timestamp
     def __str__(self):
-        return "(%s,%s,%s)" % (self.timestamp, self.oid, self.value)
+        return "(%s,%s,%g)" % (self.timestamp, self.oid, self.value)
 
 
