@@ -1,4 +1,4 @@
-	[fyu@cianna-office column-store-h-buffer-exp]$ python exp_update/exp_updateData.py 
+	$python exp_update/exp_updateData.py 
 	percentage = 0.1 starts
 	loop = 1
 	loop = 2
@@ -55,7 +55,8 @@
 	loop = 9
 	loop = 10
 	Experiment completed in 359.971s
-	[fyu@cianna-office column-store-h-buffer-exp]$ cat data/result.txt 
+	
+	$ cat data/result.txt 
 	bat update times:
 	0.1: 2.27288
 	0.2: 4.71443
