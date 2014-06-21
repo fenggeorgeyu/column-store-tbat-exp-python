@@ -25,15 +25,15 @@ for per in pers:
         update_file_name=data_dir+'update'+str(per)+suffix
         pd.prepareUpdateList(per,num_lines,update_file_name)
 
-        # update BAT
-        bat_time_start=time.time()
-        ud.updateBAT(bat_file_name,update_file_name)
-        bat_update_time+=time.time()-bat_time_start
-
         # update TBAT
         tbat_time_start=time.time()
         ud.updateTBAT(tbat_file_name,update_file_name)
         tbat_update_time+=time.time()-tbat_time_start
+
+        # update BAT
+        bat_time_start=time.time()
+        ud.updateBAT(bat_file_name,update_file_name)
+        bat_update_time+=time.time()-bat_time_start
 
     overhead=bat_update_time/tbat_update_time
     bat_update_time=bat_update_time/max_exp_times
