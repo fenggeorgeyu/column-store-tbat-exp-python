@@ -56,5 +56,5 @@ docs/_build/
 *.idea
 
 # data file
-data/
+data/*.txt
 *.data
