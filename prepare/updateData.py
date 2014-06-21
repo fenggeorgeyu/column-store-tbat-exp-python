@@ -6,6 +6,18 @@ update_file
 __author__ = 'fyu'
 from config import *
 
+def updateBATFast(bat_file_name,update_file_name):
+    bat_file=open(bat_file_name,'r+')
+    update_file=open(update_file_name,'r')
+    for updateLine in update_file:
+        (updateLineNumStr,updateValue)=updateLine.split(',')
+        updateLineNum=long(updateLineNumStr)
+        bat_file.seek((updateLineNum-1)*len(updateLine))
+        bat_file.write(updateLine)
+        bat_file.seek(0)
+    bat_file.close()
+    update_file.close()
+
 def updateBAT(bat_file_name,update_file_name):
     bat_file=open(bat_file_name,'r+')
     update_file=open(update_file_name,'r')
