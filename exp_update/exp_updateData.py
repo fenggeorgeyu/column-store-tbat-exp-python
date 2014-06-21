@@ -35,7 +35,7 @@ for per in pers:
         ud.updateTBAT(tbat_file_name,update_file_name)
         tbat_update_time+=time.time()-tbat_time_start
 
-    overhead=(bat_update_time/tbat_update_time)*100.00
+    overhead=bat_update_time/tbat_update_time
     bat_update_time=bat_update_time/max_exp_times
     tbat_update_time=tbat_update_time/max_exp_times
 

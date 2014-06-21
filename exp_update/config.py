@@ -9,7 +9,7 @@ num_lines_1m=47660
 num_lines_1g=num_lines_1m*1024
 num_lines=num_lines_1m*1
 #num_lines=20
-# num_lines=1000
+#num_lines=1000
 
 bat_file_name=data_dir+'bat'+suffix # BAT
 tbat_file_name=data_dir+'tbat'+suffix # TBAT
