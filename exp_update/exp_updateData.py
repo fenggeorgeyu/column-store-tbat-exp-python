@@ -32,7 +32,7 @@ for per in pers:
 
         # update BAT
         bat_time_start=time.time()
-        ud.updateBAT(bat_file_name,update_file_name)
+        ud.updateBATFast(bat_file_name,update_file_name)
         bat_update_time+=time.time()-bat_time_start
 
     overhead=bat_update_time/tbat_update_time
