@@ -10,14 +10,20 @@ bat_update_times=[]
 tbat_update_times=[]
 overheads=[]
 
+
+# ---- open result file----
+result_file=open(result_file_name,'w')
+result_file.write(('Total Lines: %d\n'%num_lines))
+
 for per in pers:
-    print 'percentage = %g starts' % per
+    result_file.write(('percentage = %g starts\n' % per))
+
     # initialize times
     bat_update_time=0.0
     tbat_update_time=0.0
 
     for t in xrange(0,max_exp_times):
-        print 'loop = %d' % (t+1)
+        result_file.write('loop = %d\n' % (t+1))
         # create data
         pd.prepareData(num_lines,bat_file_name,tbat_file_name)
 
@@ -43,13 +49,13 @@ for per in pers:
     tbat_update_times.append(tbat_update_time)
     overheads.append(overhead)
 
-#--------write results---------
-result_file=open(result_file_name,'w')
+# --------write results---------
+result_file.write('\n')
 result_file.write('bat update times:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
     bat_update_time=bat_update_times[i]
-    str='%g: %g\n' % (per, bat_update_time)
+    str='%g, %g\n' % (per, bat_update_time)
     result_file.write(str)
 result_file.write('\n')
 
@@ -57,7 +63,7 @@ result_file.write('tbat update times:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
     tbat_update_time=tbat_update_times[i]
-    str='%g: %g\n' % (per, tbat_update_time)
+    str='%g, %g\n' % (per, tbat_update_time)
     result_file.write(str)
 result_file.write('\n')
 
@@ -65,12 +71,14 @@ result_file.write('overheads:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
     overhead=overheads[i]
-    str='%g: %g\n' % (per, overhead)
+    str='%g, %g\n' % (per, overhead)
     result_file.write(str)
 result_file.write('\n')
 
-result_file.close()
+
 
 #--------calculate total execution time------------
 exp_total_time=time.time()-exp_start_time
-print 'Experiment completed in %gs' % (exp_total_time)
+result_file.write('Experiment completed in %gs\n' % (exp_total_time))
+
+result_file.close()
