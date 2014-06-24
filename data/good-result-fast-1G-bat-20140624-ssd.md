@@ -1,5 +1,5 @@
-% 1G data fast AOC update (using seek directly)
-% on ssd
+* 1G data fast AOC update (using seek directly)
+* on ssd
   
   
 # Experiment Log
