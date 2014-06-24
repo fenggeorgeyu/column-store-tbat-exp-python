@@ -1,3 +1,8 @@
+  % 1G data fast AOC update (using seek directly)
+  % on ssd
+  
+  # Experiment Log
+  
     Total Lines: 48803840
     percentage = 0.1 starts
     loop = 1
@@ -77,3 +82,20 @@
     0.5, 7.10039
     
     Experiment completed in 21358.6s
+   
+# Data Sizes
+
+     $ ll data/
+    total 4.8G
+    drwxrwxr-x 2 fyu fyu 4.0K Jun 21 23:56 ./
+    drwxrwxr-x 8 fyu fyu 4.0K Jun 23 20:13 ../
+    -rw-rw-r-- 1 fyu fyu 1.0G Jun 24 03:46 bat.txt
+    -rw-rw-r-- 1 fyu fyu 1003 Jun 21 23:46 good-result-slow-l10000-bat-20140621.md
+    -rw-rw-r-- 1 fyu fyu  874 Jun 24 03:46 result.txt
+    -rw-rw-r-- 1 fyu fyu 2.3G Jun 24 03:44 tbat.txt
+    -rw-rw-r-- 1 fyu fyu 103M Jun 23 22:39 update0.1.txt
+    -rw-rw-r-- 1 fyu fyu 205M Jun 23 23:38 update0.2.txt
+    -rw-rw-r-- 1 fyu fyu 308M Jun 24 00:49 update0.3.txt
+    -rw-rw-r-- 1 fyu fyu 410M Jun 24 02:11 update0.4.txt
+    -rw-rw-r-- 1 fyu fyu 512M Jun 24 03:43 update0.5.txt
+
