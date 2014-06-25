@@ -13,7 +13,6 @@ if len(sys.argv)<=1:
     # num_lines=1000
 else:
     num_lines=long(sys.argv[1])
-    print('input num_lines=%d'%num_lines)
 
 bat_file_name=data_dir+'bat'+suffix # BAT
 tbat_file_name=data_dir+'tbat'+suffix # TBAT
@@ -22,11 +21,5 @@ tbat_file_name=data_dir+'tbat'+suffix # TBAT
 pers=[0.1,0.2,0.3,0.4,0.5] # update percentage
 #pers=[0.1] # update percentage
 
-
-#result_file_name=data_dir+'result'+time.strftime("%y%m%d-%Ih%Mm%Ss")+'.txt'
-if len(sys.argv)>=3:
-    result_file_name=sys.argv[2]
-else:
-    result_file_name='result'+'.txt'
 
 

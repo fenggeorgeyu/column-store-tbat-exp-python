@@ -15,8 +15,8 @@ end_time:
 	read st < time_tmp; echo 'Experiment finished in: '$$((`date '+%s'`-$$st))'sec'; rm time_tmp; \
 	echo 'Experiment finished at:'`date '+%c'`
 exp1g:
-	python -u exp_update/exp_updateData.py $(num_lines_1g) 'result1g.txt'> log_1g.txt
+	python -u exp_update/exp_updateData.py $(num_lines_1g) > log_1g.txt
 exp5g:
-	python -u exp_update/exp_updateData.py $(num_lines_5g) 'result5g.txt'> log_5g.txt
+	python -u exp_update/exp_updateData.py $(num_lines_5g) > log_5g.txt
 exp10g:
-	python -u exp_update/exp_updateData.py $(num_lines_10g) 'result10g.txt'> log_10g.txt
+	python -u exp_update/exp_updateData.py $(num_lines_10g) > log_10g.txt

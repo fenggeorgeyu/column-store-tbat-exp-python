@@ -11,13 +11,15 @@ tbat_update_times=[]
 overheads=[]
 
 
-# ---- open result file----
-result_file=open(result_file_name,'w')
-result_file.write(('Total Lines: %d\n'%num_lines))
+# # ---- open result file----
+# result_file=open(result_file_name,'w')
+# result_file.write(('Total Lines: %d\n'%num_lines))
+
+print ('Total Lines: %d\n'%num_lines)
 
 for per in pers:
     str1=('\npercentage = %g starts' % per)
-    result_file.write(str1+'\n')
+    # result_file.write(str1+'\n')
     print(str1)
 
     # initialize times
@@ -26,7 +28,7 @@ for per in pers:
 
     for t in xrange(0,max_exp_times):
         str1='loop = %d' % (t+1)
-        result_file.write(str1+'\n')
+        # result_file.write(str1+'\n')
         print(str1)
         # create data
         pd.prepareData(num_lines,bat_file_name,tbat_file_name)
@@ -53,37 +55,39 @@ for per in pers:
     tbat_update_times.append(tbat_update_time)
     overheads.append(overhead)
 
-# --------write results---------
-result_file.write('\n')
-result_file.write('bat update times:\n')
+
+
+print('\n')
+print('bat update times:')
 for i in xrange(0, len(pers)):
     per=pers[i]
     bat_update_time=bat_update_times[i]
-    str='%g, %g\n' % (per, bat_update_time)
-    result_file.write(str)
-result_file.write('\n')
+    str1='%g, %g' % (per, bat_update_time)
+    print(str1)
 
-result_file.write('tbat update times:\n')
+print('')
+
+
+print('tbat update times:')
 for i in xrange(0, len(pers)):
     per=pers[i]
     tbat_update_time=tbat_update_times[i]
-    str='%g, %g\n' % (per, tbat_update_time)
-    result_file.write(str)
-result_file.write('\n')
+    str1='%g, %g' % (per, tbat_update_time)
+    print(str1)
+print('')
 
-result_file.write('overheads:\n')
+
+print('overheads:')
 for i in xrange(0, len(pers)):
     per=pers[i]
     overhead=overheads[i]
-    str='%g, %g\n' % (per, overhead)
-    result_file.write(str)
-result_file.write('\n')
+    str1='%g, %g' % (per, overhead)
+    print(str1)
+print('')
 
 
 
 #--------calculate total execution time------------
 exp_total_time=time.time()-exp_start_time
-str1='Experiment completed in %gs\n'
-result_file.write( str1 % (exp_total_time))
-
-result_file.close()
+str1='Experiment completed in %ds'%exp_total_time
+print(str1)
