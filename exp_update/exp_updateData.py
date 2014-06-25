@@ -16,14 +16,18 @@ result_file=open(result_file_name,'w')
 result_file.write(('Total Lines: %d\n'%num_lines))
 
 for per in pers:
-    result_file.write(('percentage = %g starts\n' % per))
+    str1=('\npercentage = %g starts' % per)
+    result_file.write(str1+'\n')
+    print(str1)
 
     # initialize times
     bat_update_time=0.0
     tbat_update_time=0.0
 
     for t in xrange(0,max_exp_times):
-        result_file.write('loop = %d\n' % (t+1))
+        str1='loop = %d' % (t+1)
+        result_file.write(str1+'\n')
+        print(str1)
         # create data
         pd.prepareData(num_lines,bat_file_name,tbat_file_name)
 
@@ -79,6 +83,7 @@ result_file.write('\n')
 
 #--------calculate total execution time------------
 exp_total_time=time.time()-exp_start_time
-result_file.write('Experiment completed in %gs\n' % (exp_total_time))
+str1='Experiment completed in %gs\n'
+result_file.write( str1 % (exp_total_time))
 
 result_file.close()
