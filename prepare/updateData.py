@@ -18,7 +18,7 @@ def updateBATFast(bat_file_name,update_file_name):
     bat_file.close()
     update_file.close()
 
-def updateBAT(bat_file_name,update_file_name):
+def updateBAT1(bat_file_name,update_file_name):
     bat_file=open(bat_file_name,'r+')
     update_file=open(update_file_name,'r')
     for updateLine in update_file:
@@ -27,6 +27,24 @@ def updateBAT(bat_file_name,update_file_name):
         currentLineNum=1
         while currentLineNum < updateLineNum: # simulating seeking next line
             bat_file.seek(len(updateLine),1)
+            currentLineNum+=1
+        # bat_file.seek((currentLineNum-1)*len(updateLine))
+        # bat_file.seek((updateLineNum-1)*len(updateLine))
+        bat_file.write(updateLine)
+        bat_file.seek(0)
+    bat_file.close()
+    update_file.close()
+    
+def updateBAT2(bat_file_name,update_file_name):
+    bat_file=open(bat_file_name,'r+')
+    update_file=open(update_file_name,'r')
+    for updateLine in update_file:
+        (updateLineNumStr,updateValue)=updateLine.split(',')
+        updateLineNum=long(updateLineNumStr)
+        currentLineNum=1
+        while currentLineNum < updateLineNum: # simulating seeking next line
+            #print '%d\n' % bat_file.tell()
+            bat_file.seek(1,1)
             currentLineNum+=1
         # bat_file.seek((currentLineNum-1)*len(updateLine))
         # bat_file.seek((updateLineNum-1)*len(updateLine))
