@@ -45,7 +45,7 @@ for per in pers:
 
         # update BAT
         bat_time_start=time.time()
-        ud.updateBAT2(bat_file_name,update_file_name)
+        ud.updateBAT1(bat_file_name,update_file_name)
         bat_update_time+=time.time()-bat_time_start
         #print 'bat updated\n'
 
@@ -88,5 +88,5 @@ result_file.write('\n')
 #--------calculate total execution time------------
 exp_total_time=time.time()-exp_start_time
 result_file.write('Experiment completed in %gs\n' % (exp_total_time))
-print 'Experiment finished.\n'
+print 'Experiment completed in %gs\n' % (exp_total_time)
 result_file.close()

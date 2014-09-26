@@ -6,6 +6,9 @@ update_file
 __author__ = 'fyu'
 from config import *
 
+BUFFERING_SIZE=1048576
+#BUFFERING_SIZE=10
+
 def updateBATFast(bat_file_name,update_file_name):
     bat_file=open(bat_file_name,'r+')
     update_file=open(update_file_name,'r')
@@ -19,8 +22,8 @@ def updateBATFast(bat_file_name,update_file_name):
     update_file.close()
 
 def updateBAT1(bat_file_name,update_file_name):
-    bat_file=open(bat_file_name,'r+')
-    update_file=open(update_file_name,'r')
+    bat_file=open(bat_file_name,'r+', buffering=BUFFERING_SIZE)
+    update_file=open(update_file_name,'r', buffering=BUFFERING_SIZE)
     for updateLine in update_file:
         (updateLineNumStr,updateValue)=updateLine.split(',')
         updateLineNum=long(updateLineNumStr)
@@ -30,14 +33,15 @@ def updateBAT1(bat_file_name,update_file_name):
             currentLineNum+=1
         # bat_file.seek((currentLineNum-1)*len(updateLine))
         # bat_file.seek((updateLineNum-1)*len(updateLine))
+        # print '%d\n' % currentLineNum
         bat_file.write(updateLine)
         bat_file.seek(0)
     bat_file.close()
     update_file.close()
     
 def updateBAT2(bat_file_name,update_file_name):
-    bat_file=open(bat_file_name,'r+')
-    update_file=open(update_file_name,'r')
+    bat_file=open(bat_file_name,'r+', buffering=BUFFERING_SIZE)
+    update_file=open(update_file_name,'r', buffering=BUFFERING_SIZE)
     for updateLine in update_file:
         (updateLineNumStr,updateValue)=updateLine.split(',')
         updateLineNum=long(updateLineNumStr)
@@ -48,6 +52,7 @@ def updateBAT2(bat_file_name,update_file_name):
             currentLineNum+=1
         # bat_file.seek((currentLineNum-1)*len(updateLine))
         # bat_file.seek((updateLineNum-1)*len(updateLine))
+        print '%d\n' % currentLineNum
         bat_file.write(updateLine)
         bat_file.seek(0)
     bat_file.close()
