@@ -6,6 +6,12 @@ from prepare import prepareDataStringFile as pd
 import numpy as np
 import sys
 
+def reject_outliers(data, m=2):
+    u = np.median(data)
+    s = np.std(data)
+    filtered = [e for e in data if (u - m * s < e < u + m * s)]
+    return filtered
+
 # receive arguments from stdin
 
 if(len(sys.argv)>3):
@@ -48,9 +54,8 @@ for per in pers:
     tbat_update_time=0.0
 
     for t in xrange(0,max_exp_times):
-        #result_file.write('loop = %d\n' % (t+1))
         print 'loop=%d' %(t+1)
-        sys.stdout.flush()
+        sys.stdout.flush() # flush print in nohup.out
 
         # create data
         pd.prepareData(num_lines,bat_file_name,tbat_file_name)
@@ -64,41 +69,51 @@ for per in pers:
         ud.updateTBAT(tbat_file_name,update_file_name)
         temp1=time.time()-start1
         tbat_update_time_table[index][t]=temp1
-        #tbat_update_time+=temp1
 
         # update BAT
         start2=time.time()
         ud.updateBAT1(bat_file_name,update_file_name)
         temp2=time.time()-start2
         bat_update_time_table[index][t]=temp2
-        #bat_update_time+=temp2
         result_file.write('loop = %3d: | tbat_time | %12g | bat_time | %12g | overhead | %12g \n'
                           % (t+1, temp1,temp2,temp2/temp1))
-        #print 'bat updated\n'
 
-    tbat_update_time_medians.append(np.median(tbat_update_time_table[index]))
-    tbat_update_time_means.append(np.mean(tbat_update_time_table[index]))
-    tbat_update_time_maxs.append(np.max(tbat_update_time_table[index]))
-    tbat_update_time_mins.append(np.min(tbat_update_time_table[index]))
-    
-    bat_update_time_medians.append(np.median(bat_update_time_table[index]))
-    bat_update_time_means.append(np.mean(bat_update_time_table[index]))
-    bat_update_time_maxs.append(np.max(bat_update_time_table[index]))
-    bat_update_time_mins.append(np.min(bat_update_time_table[index]))
+
+
+    # remove outlier
+    tbat_update_time_cleaned=reject_outliers(tbat_update_time_table[index])
+    bat_update_time_cleaned=reject_outliers(bat_update_time_table[index])
+
+    result_file.write('after outlier cleaned times:\n')
+    result_file.write('tbat times: %s\n' %(tbat_update_time_cleaned))
+    result_file.write('bat times: %s\n' %(bat_update_time_cleaned))
+    result_file.write('\n')
+
+    # calculate tbat_times
+    tbat_update_time_medians.append(np.median(tbat_update_time_cleaned))
+    tbat_update_time_means.append(np.mean(tbat_update_time_cleaned))
+    tbat_update_time_maxs.append(np.max(tbat_update_time_cleaned))
+    tbat_update_time_mins.append(np.min(tbat_update_time_cleaned))
+
+    # calculate bat times
+    bat_update_time_medians.append(np.median(bat_update_time_cleaned))
+    bat_update_time_means.append(np.mean(bat_update_time_cleaned))
+    bat_update_time_maxs.append(np.max(bat_update_time_cleaned))
+    bat_update_time_mins.append(np.min(bat_update_time_cleaned))
 
     overhead_medians.append(bat_update_time_medians[-1]/tbat_update_time_medians[-1])
     overhead_means.append(bat_update_time_means[-1]/tbat_update_time_means[-1])
 
     index+=1
 
-
-
 result_file.write('\n')
 
-result_file.write('update time tbat mean| bat mean| mean overhead:\n')
+result_file.write('update time tbat min | tbat_max | bat min | bat max:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
-    str='%g | %-15g | %-15g | %-15g \n' % (per, tbat_update_time_means[i],bat_update_time_means[i],overhead_means[i])
+    str='%g | %-15g | %-15g | %-15g | %-15g \n' \
+        % (per, tbat_update_time_mins[i], tbat_update_time_maxs[i],\
+        bat_update_time_mins[i], bat_update_time_maxs[i])
     result_file.write(str)
 result_file.write('\n')
 
@@ -108,6 +123,15 @@ for i in xrange(0, len(pers)):
     str='%g | %-15g | %-15g | %-15g \n' % (per, tbat_update_time_medians[i],bat_update_time_medians[i],overhead_medians[i])
     result_file.write(str)
 result_file.write('\n')
+
+result_file.write('update time tbat mean| bat mean| mean overhead:\n')
+for i in xrange(0, len(pers)):
+    per=pers[i]
+    str='%g | %-15g | %-15g | %-15g \n' % (per, tbat_update_time_means[i],bat_update_time_means[i],overhead_means[i])
+    result_file.write(str)
+result_file.write('\n')
+
+
 
 
 

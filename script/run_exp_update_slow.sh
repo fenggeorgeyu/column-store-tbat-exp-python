@@ -4,8 +4,8 @@ now=$(date +%Y%m%d-%Hh%Mm%Ss)
 
 num_lines_1m=47660
 num_lines_1g=$(( num_lines_1m * 1024 ))
-num_lines=${num_lines_1m}
-#num_lines=100
+#num_lines=${num_lines_1m}
+num_lines=100
 max_exp_times=10
 pers="0.1 0.2 0.3 0.4 0.5"
 
