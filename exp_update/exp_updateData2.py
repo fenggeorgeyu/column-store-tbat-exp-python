@@ -47,22 +47,21 @@ for per in pers:
         pd.prepareUpdateList(per,num_lines,update_file_name)
 
         # update TBAT
-        tbat_time_start=time.time()
+        start1=time.time()
         ud.updateTBAT(tbat_file_name,update_file_name)
-        temp1=time.time()-tbat_time_start
+        temp1=time.time()-start1
         tbat_update_time_table[index][t]=temp1
         #tbat_update_time+=temp1
 
         # update BAT
-        bat_time_start=time.time()
+        start2=time.time()
         ud.updateBAT1(bat_file_name,update_file_name)
-        temp2=time.time()-tbat_time_start
+        temp2=time.time()-start2
         bat_update_time_table[index][t]=temp2
         #bat_update_time+=temp2
         result_file.write('loop = %3d: | tbat_time | %12g | bat_time | %12g | overhead | %12g \n'
                           % (t+1, temp1,temp2,temp2/temp1))
         #print 'bat updated\n'
-
 
     tbat_update_time_medians.append(np.median(tbat_update_time_table[index]))
     tbat_update_time_means.append(np.mean(tbat_update_time_table[index]))
@@ -77,17 +76,7 @@ for per in pers:
     overhead_medians.append(bat_update_time_medians[-1]/tbat_update_time_medians[-1])
     overhead_means.append(bat_update_time_means[-1]/tbat_update_time_means[-1])
 
-
     index+=1
-
-    # overhead=bat_update_time/tbat_update_time
-    # overheads.append(overhead)
-    #
-    # bat_update_time=bat_update_time/max_exp_times
-    # tbat_update_time=tbat_update_time/max_exp_times
-    #
-    # bat_update_times.append(bat_update_time)
-    # tbat_update_times.append(tbat_update_time)
 
 
 
