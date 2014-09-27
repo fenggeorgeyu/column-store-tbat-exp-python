@@ -10,8 +10,8 @@ num_lines_1m=47660
 num_lines_1g=num_lines_1m*1024
 
 # num_lines=20
-#num_lines=100
-num_lines=num_lines_1m
+num_lines=100
+#num_lines=num_lines_1m
 
 #-------------update percentage---------------
 #pers=[0.1]
