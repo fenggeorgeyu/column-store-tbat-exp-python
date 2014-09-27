@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [ -z "$1" ]
+  then
+    echo "Please input your email password!"
+    exit
+fi
+
 now=$(date +%Y%m%d-%Hh%Mm%Ss)
 
 num_lines_1m=47660

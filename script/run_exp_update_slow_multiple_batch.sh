@@ -2,6 +2,12 @@
 
 now=$(date +%Y%m%d-%Hh%Mm%Ss)
 
+if [ -z "$1" ]
+  then
+    echo "Please input your email password!"
+    exit
+fi
+
 num_lines_1m=47660
 num_lines_1g=$(( num_lines_1m * 1024 ))
 num_lines=${num_lines_1m}
