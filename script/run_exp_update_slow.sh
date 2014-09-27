@@ -35,7 +35,7 @@ echo `date` >> ${tmp}
 echo "Finished." >> ${tmp}
 
 
-sendfrom="Machine<fengyu@siu.edu>"
+sendfrom=`hostname`"<fengyu@siu.edu>"
 sendto="fengyu@siu.edu"
 smtp_server="smtp.gmail.com:587"
 xuser="fengyu@siu.edu"
