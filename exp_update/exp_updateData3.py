@@ -95,48 +95,64 @@ for per in pers:
 
 result_file.write('\n')
 
-result_file.write('tbat update time medians:\n')
+result_file.write('update time tbat mean| bat mean| mean overhead:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
-    str='%g, %g\n' % (per, tbat_update_time_medians[i])
+    str='%g | %-15g | %-15g | %-15g \n' % (per, tbat_update_time_means[i],bat_update_time_means[i],overhead_means[i])
     result_file.write(str)
 result_file.write('\n')
 
-result_file.write('tbat update time means:\n')
+result_file.write('update time tbat median| bat median| median overhead:\n')
 for i in xrange(0, len(pers)):
     per=pers[i]
-    str='%g, %g\n' % (per, tbat_update_time_means[i])
-    result_file.write(str)
-result_file.write('\n')
-
-result_file.write('bat update time medians:\n')
-for i in xrange(0, len(pers)):
-    per=pers[i]
-    str='%g, %g\n' % (per, bat_update_time_medians[i])
-    result_file.write(str)
-result_file.write('\n')
-
-result_file.write('bat update time means:\n')
-for i in xrange(0, len(pers)):
-    per=pers[i]
-    str='%g, %g\n' % (per, bat_update_time_means[i])
-    result_file.write(str)
-result_file.write('\n')
-
-result_file.write('median overheads:\n')
-for i in xrange(0, len(pers)):
-    per=pers[i]
-    str='%g, %g\n' % (per, overhead_medians[i])
+    str='%g | %-15g | %-15g | %-15g \n' % (per, tbat_update_time_medians[i],bat_update_time_medians[i],overhead_medians[i])
     result_file.write(str)
 result_file.write('\n')
 
 
-result_file.write('mean overheads:\n')
-for i in xrange(0, len(pers)):
-    per=pers[i]
-    str='%g, %g\n' % (per, overhead_means[i])
-    result_file.write(str)
-result_file.write('\n')
+
+# result_file.write('tbat update time medians:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, tbat_update_time_medians[i])
+#     result_file.write(str)
+# result_file.write('\n')
+#
+# result_file.write('tbat update time means:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, tbat_update_time_means[i])
+#     result_file.write(str)
+# result_file.write('\n')
+#
+# result_file.write('bat update time medians:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, bat_update_time_medians[i])
+#     result_file.write(str)
+# result_file.write('\n')
+#
+# result_file.write('bat update time means:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, bat_update_time_means[i])
+#     result_file.write(str)
+# result_file.write('\n')
+#
+# result_file.write('median overheads:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, overhead_medians[i])
+#     result_file.write(str)
+# result_file.write('\n')
+#
+#
+# result_file.write('mean overheads:\n')
+# for i in xrange(0, len(pers)):
+#     per=pers[i]
+#     str='%g, %g\n' % (per, overhead_means[i])
+#     result_file.write(str)
+# result_file.write('\n')
 
 
 
