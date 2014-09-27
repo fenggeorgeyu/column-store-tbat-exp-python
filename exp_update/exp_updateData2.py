@@ -4,6 +4,7 @@ from config import *
 from prepare import updateData as ud
 from prepare import prepareDataStringFile as pd
 import numpy as np
+import sys
 
 exp_start_time=time.time()
 
@@ -39,6 +40,8 @@ for per in pers:
     for t in xrange(0,max_exp_times):
         #result_file.write('loop = %d\n' % (t+1))
         print 'loop=%d' %(t+1)
+        sys.stdout.flush()
+
         # create data
         pd.prepareData(num_lines,bat_file_name,tbat_file_name)
 
@@ -159,5 +162,5 @@ result_file.write('\n')
 #--------calculate total execution time------------
 exp_total_time=time.time()-exp_start_time
 result_file.write('Experiment completed in %gs\n' % (exp_total_time))
-print 'Experiment completed in %gs\n' % (exp_total_time)
+print '\nExperiment completed in %gs\n' % (exp_total_time)
 result_file.close()
