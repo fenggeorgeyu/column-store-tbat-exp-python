@@ -1,10 +1,14 @@
 #!/bin/bash
+# don't forget to change your email address at the bottom
 
 if [ -z "$1" ]
   then
     echo "Please input your email password!"
     exit
 fi
+
+
+
 
 num_lines_1m=47660
 num_lines_1g=$(( num_lines_1m * 1024 ))
@@ -13,6 +17,7 @@ num_lines=${num_lines_1m*64}
 max_exp_times=10
 max_run_times=3
 pers="0.1 0.2 0.3 0.4 0.5"
+
 
 cd ..
 
@@ -39,10 +44,10 @@ do
     echo "Finished." >> ${tmp}
 
 
-    sendfrom=`hostname`"<fengyu@siu.edu>"
-    sendto="fengyu@siu.edu"
-    smtp_server="smtp.gmail.com:587"
-    xuser="fengyu@siu.edu"
+    sendfrom=`hostname`"your_email_address"
+    sendto="to_email_address"
+    smtp_server="smtp.youremail.com:587"
+    xuser="your_email_user"
     xp=$1
 
     sendEmail -f ${sendfrom} -t ${sendto} -s ${smtp_server} -o tls=yes -xu ${xuser} -xp ${xp} -u ${title} < ${tmp}
