@@ -132,7 +132,11 @@ for i in xrange(0, len(pers)):
 result_file.write('\n')
 
 
-
+#--------calculate total execution time------------
+exp_total_time=time.time()-exp_start_time
+result_file.write('Experiment completed in %gs\n' % (exp_total_time))
+print '\nExperiment completed in %gs\n' % (exp_total_time)
+result_file.close()
 
 
 # result_file.write('tbat update time medians:\n')
@@ -209,8 +213,3 @@ result_file.write('\n')
 
 
 
-#--------calculate total execution time------------
-exp_total_time=time.time()-exp_start_time
-result_file.write('Experiment completed in %gs\n' % (exp_total_time))
-print '\nExperiment completed in %gs\n' % (exp_total_time)
-result_file.close()
