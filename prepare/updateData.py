@@ -21,6 +21,18 @@ def updateBATFast(bat_file_name,update_file_name):
     bat_file.close()
     update_file.close()
 
+def updateBATFast2(bat_file_name,update_file_name):
+    with open(bat_file_name, 'r+', buffering=BUFFERING_SIZE) as bat_file:
+        with open(update_file_name, 'r', buffering=BUFFERING_SIZE) as update_file:
+            for updateLine in update_file:
+                (updateLineNumStr,updateValue)=updateLine.split(',')
+                updateLineNum=long(updateLineNumStr)
+                bat_file.seek((updateLineNum-1)*len(updateLine))
+                bat_file.write(updateLine)
+                bat_file.seek(0)
+    # bat_file.close()
+    # update_file.close()
+
 def updateBAT1(bat_file_name,update_file_name):
     bat_file=open(bat_file_name,'r+', buffering=BUFFERING_SIZE)
     update_file=open(update_file_name,'r', buffering=BUFFERING_SIZE)
@@ -57,6 +69,21 @@ def updateBAT2(bat_file_name,update_file_name):
         bat_file.seek(0)
     bat_file.close()
     update_file.close()
+
+def updateBAT3(bat_file_name,update_file_name):
+    with open(bat_file_name,'r+', buffering=BUFFERING_SIZE) as bat_file:
+        with open(update_file_name,'r', buffering=BUFFERING_SIZE) as update_file:
+            for updateLine in update_file:
+                (updateLineNumStr,updateValue)=updateLine.split(',')
+                updateLineNum=long(updateLineNumStr)
+                currentLineNum=1
+                updateLineLength=len(updateLine)
+                while currentLineNum < updateLineNum: # simulating seeking next line
+                    bat_file.seek(updateLineLength, 1)
+                    currentLineNum += 1
+                #print '%d\n' % currentLineNum
+                bat_file.write(updateLine)
+                bat_file.seek(0)
 
 
 def updateTBAT(tbat_file_name,update_file_name):

@@ -72,7 +72,9 @@ for per in pers:
 
         # update BAT
         start2=time.time()
-        ud.updateBAT1(bat_file_name,update_file_name)
+        # ud.updateBATFast2(bat_file_name, update_file_name)
+        # ud.updateBAT1(bat_file_name,update_file_name)
+        ud.updateBAT3(bat_file_name, update_file_name)
         temp2=time.time()-start2
         bat_update_time_table[index][t]=temp2
         result_file.write('loop = %3d: | tbat_time | %12g | bat_time | %12g | overhead | %12g \n'
